@@ -58,6 +58,7 @@ export const findByName = async (req, res) => {
 }
 
 export const countByNames = async (req, res) => {
+    // TODO
     // const names = req.query.names;
     // const list = Array.isArray(names) ? names : [names];
     // const count = repo.countByNames(list);
@@ -65,6 +66,7 @@ export const countByNames = async (req, res) => {
 }
 
 export const findByMinScore = async (req, res) => {
+    // TODO
     const students = await repo.findByMinScore(req.params.exam, +req.params.minScore);
     res.json(students);
 }
