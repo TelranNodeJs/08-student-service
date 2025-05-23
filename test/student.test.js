@@ -1,13 +1,17 @@
-//  в названии файла set. заменить на актцальное название
-// TODO
+import {Student} from "../src/model/student.js";
 
+describe('Student class', () => {
+    test('should create a Student instance with given properties', () => {
+        const id = 1;
+        const name = 'Alice';
+        const password = 'securePassword123';
 
-// import {removeDuplicates} from "../iterator/set.js";
-//
-//
-// describe('removeDuplicates', () => {
-//     test('removes duplicates from array', () => {
-//         expect(removeDuplicates(['one', 'two', 'three', 'two','three', 'four', 'five']))
-//             .toEqual(['one', 'two', 'three', 'four', 'five'])
-//     })
-// })
+        const student = new Student(id, name, password);
+
+        expect(student).toBeInstanceOf(Student);
+        expect(student.id).toBe(id);
+        expect(student.name).toBe(name);
+        expect(student.password).toBe(password);
+        expect(student.scores).toEqual({});
+    });
+});

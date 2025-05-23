@@ -1,11 +1,11 @@
 import express from 'express';
 import {
-    addStudent,
-    findStudent,
-    deleteStudent,
-    updateStudent,
     addScore,
-    findByName, countByNames, findByMinScore
+    addStudent, countByNames,
+    deleteStudent, findByMinScore,
+    findByName,
+    findStudent,
+    updateStudent
 } from '../controller/studentController.js';
 
 const router = express.Router();

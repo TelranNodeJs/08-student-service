@@ -1,0 +1,30 @@
+
+
+docker run --name mongodb -v mongo_volume:/data/db -p 27017:27017 -e MONGO_INITDB_ROOT_USERNAME=elena -e MONGO_INITDB_ROOT_PASSWORD=1234 -d mongo:8.0.6
+docker volume create mongo_volume
+
+
+docker exec -it mongodb mongosh -u elena -p
+show dbs
+use java59
+show collections
+db.college.find()
+db.college.findOneAndDelete({_id:1000})
+db.college.findOneAndUpdate({ _id: 2000 },{ $set: { name: "Jessy" } },{ returnDocument: 'after' })
+
+
+
+
+
+local connection string:
+const url = 'mongodb://elena:1234@localhost:27017/java59?authSource=admin';
+const dbName='java59'
+const client = new MongoClient(url);
+let collection;
+
+connecting:
+export async function connect(){
+    await client.connect();
+    const db = client.db(dbName);
+    collection = db.collection('college');
+}
