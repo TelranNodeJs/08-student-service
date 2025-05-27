@@ -1,4 +1,4 @@
-import Student from '../model/student';
+import Student from '../model/student.js';
 
 export async function createStudent(student) {
     return Student.create(student);
@@ -28,10 +28,10 @@ export async function findStudentsByName(name) {
 }
 
 export async function countStudentsByNames(names) {
-    const regexConditions = names.map({
+    const regexConditions = names.map(name => ({
         name: new RegExp(`^${name}$`, "i")
-    })
-    return Student.countDocuments(regexConditions)
+    }))
+    return Student.countDocuments({$or: regexConditions})
 }
 
 export async function findStudentsByMinScore(exam, minScore) {

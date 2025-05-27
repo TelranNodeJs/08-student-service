@@ -13,7 +13,7 @@ export const addStudent = async (req, res) => {
 export const findStudent = async (req, res) => {
     const student = await service.findStudent(+req.params.id)
     if (student) {
-        delete student.password
+        student.password = undefined
         res.json(student)
     } else {
         res.sendStatus(404)
@@ -23,7 +23,7 @@ export const findStudent = async (req, res) => {
 export const deleteStudent = async (req, res) => {
     const student = await service.deleteStudent(+req.params.id)
     if (student) {
-        delete student.password
+        student.password = undefined
         res.json(student)
     } else {
         res.sendStatus(404)
@@ -37,7 +37,7 @@ export const updateStudent = async (req, res) => {
     }
     const student = await service.updateStudent(+req.params.id, req.body)
     if (student) {
-        delete student.scores
+        student.scores = undefined
         res.json(student)
     } else {
         res.sendStatus(404)
@@ -50,13 +50,13 @@ export const addScore = async (req, res) => {
         return res.status(400).json({error: error.details[0].message})
     }
     const success = await service.addScore(+req.params.id, req.body.examName, +req.body.score);
-    res.sendStatus(success ? 201 : 409)
+    res.sendStatus(success ? 204 : 409)
 }
 
 export const findByName = async (req, res) => {
     const students = (await service.findByName(req.params.name))
         .map(student => {
-            delete student.password
+            student.password = undefined
             return student
         })
     res.json(students);
