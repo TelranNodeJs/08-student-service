@@ -1,13 +1,11 @@
 import dotenv from "dotenv";
 import express from "express";
 import studentRoutes from './routes/studentRoutes.js';
-import {MongoClient} from "mongodb";
-import {init} from './repository/studentRepository.js'
+import mongoose from "mongoose";
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 9000;
-const client = new MongoClient(process.env.MONGO_URL);
 
 app.use(express.json());
 app.use(studentRoutes)
@@ -18,9 +16,11 @@ app.use((req, res) => {
 
 async function startServer() {
     try {
-        await client.connect();
-        const db = client.db(process.env.DB_NAME);
-        init(db);
+        await mongoose.connect(process.env.MONGO_URI,
+            {
+                dbName: process.env.DB_NAME,
+            })
+        console.log("Connected to MongoDB")
         app.listen(port, () => {
             console.log(`Server started on port ${port}`);
         })
