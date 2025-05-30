@@ -28,3 +28,25 @@ export async function connect(){
     const db = client.db(dbName);
     collection = db.collection('college');
 }
+
+mongo atlas connection string:
+PORT=8080
+MONGO_URL=mongodb+srv://elena:12345.com@student-service-cluster.zopvmkg.mongodb.net/java59?retryWrites=true&w=majority&appName=student-service-cluster
+DB_NAME=java59
+COLLECTION_NAME=students
+
+connecting:
+async function startServer() {
+    try {
+        await mongoose.connect(process.env.MONGO_URL,
+            {
+                dbName: process.env.DB_NAME,
+            })
+        console.log("Connected to MongoDB")
+        app.listen(port, () => {
+            console.log(`Server started on port ${port}`);
+        })
+    } catch (err) {
+        console.log('Failed to connect to MongoDB.', err);
+    }
+}
