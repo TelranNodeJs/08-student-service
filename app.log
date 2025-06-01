@@ -1,0 +1,13 @@
+[2025-06-01T12:59:50.112Z] info: Connected to MongoDB
+[2025-06-01T12:59:50.117Z] info: Server started on port 8080. Press Ctrl-C to finish
+[2025-06-01T13:00:08.227Z] info: Connected to MongoDB
+[2025-06-01T13:00:08.230Z] info: Server started on port 8080. Press Ctrl-C to finish
+[2025-06-01T13:00:21.485Z] http: ::1 - - [01/Jun/2025:13:00:21 +0000] "POST /student HTTP/1.1" 409 8 "-" "PostmanRuntime/7.44.0"
+
+[2025-06-01T13:03:15.867Z] info: Connected to MongoDB
+[2025-06-01T13:03:15.872Z] info: Server started on port 8080. Press Ctrl-C to finish
+[2025-06-01T13:03:30.089Z] warn: Student 1000 : undefined
+[2025-06-01T13:03:30.094Z] http: ::1 - - [01/Jun/2025:13:03:30 +0000] "PATCH /student/1000 HTTP/1.1" 200 46 "-" "PostmanRuntime/7.44.0"
+
+[2025-06-01T13:04:48.377Z] http: ::1 - - [01/Jun/2025:13:04:48 +0000] "GET /student/1000 HTTP/1.1" 200 78 "-" "PostmanRuntime/7.44.0"
+
