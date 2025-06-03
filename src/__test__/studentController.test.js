@@ -66,12 +66,12 @@ describe('Student Controller (integration, no DB)', () => {
     // --- /student/:id GET ---
     describe('GET /student/:id', () => {
         it('200 + student if found', async () => {
-            service.findStudent.mockResolvedValue({ id: 2, name: 'Anna' });
+            service.findStudent.mockResolvedValue({ id: 255555500, name: 'Anna' });
 
-            const res = await request(app).get('/student/2');
+            const res = await request(app).get('/student/255555500');
 
             expect(res.statusCode).toBe(200);
-            expect(res.body).toEqual({ id: 2, name: 'Anna' });
+            expect(res.body).toEqual({ id: 255555500, name: 'Anna' });
         });
 
         it('404 if not found', async () => {
